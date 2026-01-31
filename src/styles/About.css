@@ -285,10 +285,6 @@
           }
         }
       }
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -516,19 +512,6 @@
   }
 }
 
-        .bot-row {
-          padding: var(--spacing-2xl);
-
-          .experience-text {
-            .text {
-              font-size: 1.25rem;
-              line-height: 2;
-            }
-      }
-    }
-  }
-}
-
 @media (min-width: 2250px) {
   #about {
     padding: 6rem 20%;
@@ -588,17 +571,7 @@
             }
           }
         }
-
-        .bot-row {
-          padding: var(--spacing-3xl);
-
-          .experience-text {
-            .text {
-              font-size: 1.5rem;
-              line-height: 2;
-            }
-          }
-        }
-		}
-	}
+      }
+    }
+  }
 }
