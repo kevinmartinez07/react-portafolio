@@ -1,0 +1,131 @@
+:root {
+  font-family: 'poppins';
+  line-height: 1.5;
+  font-weight: 400;
+
+  --gradient-fade-light: rgba(240, 240, 240, 1); /* color fondo light */
+  --gradient-fade-dark: rgba(36, 36, 36, 1);    /* color fondo dark */
+  --gradient-fade-transparent: rgba(255, 255, 255, 0); /* transparente */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+.app {
+  position: relative;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+  section {
+    min-height: 100dvh;
+    padding: 5rem 2rem;
+    box-sizing: border-box;
+  }
+
+  footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    gap: 3px;
+    bottom: 0;
+    padding: 0.5rem;
+    font-size: 10px;
+    backdrop-filter: blur(10px);
+
+    .footer-icon {
+      color: blue;
+    }
+  }
+}
+
+.dark {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  --gradient-fade: var(--gradient-fade-dark);
+
+  button {
+    color: rgba(255, 255, 255, 0.87);
+
+    &:hover {
+      color: rgba(128, 128, 128, 0.87);
+    }
+  }
+}
+
+.light {
+  color: #242424;
+  background-color: #f0f0f0;
+  --gradient-fade: var(--gradient-fade-light);
+
+  button {
+    color: #242424;
+
+    &:hover {
+      color: rgba(128, 128, 128, 0.87);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .app{
+      footer {
+      margin: 0 5%;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .app{
+    footer {
+      margin: 0.5rem 15%;
+    }
+  }
+}
+
+@media (min-width: 2250px) {
+  .app {
+    section {
+      padding: 5rem 15%;
+    }
+
+    footer {
+      margin: 0.5rem 15%;
+    }
+  }
+}
+
+/* 
+MEDIA QUERYS
+mobile
+@media (max-width: 500px) {
+
+}
+
+tablet
+@media (min-width: 501px) and (max-width: 900px) {
+
+}
+
+hasta 24"
+@media (min-width: 1920px) {
+
+}
+
+a partir de 27"
+@media (min-width: 2250px) {
+
+}
+*/
