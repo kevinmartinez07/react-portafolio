@@ -1,11 +1,42 @@
 import "../../styles/About.css";
 import AboutImg from "../../assets/Images/Kevin/about-img.webp";
-import ExperienceElement from "../../components/ExperienceElement/ExperienceElement";
-import { useExperienceElement } from "../../hooks/useExperienceElement";
-import { ABOUT_DESCRIPTION } from "../../constants/data";
+import { 
+  ABOUT_HEADLINE, 
+  ABOUT_HIGHLIGHTS, 
+  ABOUT_STACK,
+  ABOUT_STATS 
+} from "../../constants/data";
+import { CheckCircle2 } from 'lucide-react';
+import DesarrolloWeb from '../../assets/Icons/Other/folder-code.svg?react';
+import Consultores from '../../assets/Icons/Other/clipboard-list.svg?react';
+import Educacion from '../../assets/Icons/Other/graduation-cap.svg?react';
+import { scrollToSection } from '../../utils/scrollTo';
 
 const About = () => {
-  const { dataToFill } = useExperienceElement();
+  const iconMap = {
+    'folder-code': DesarrolloWeb,
+    'clipboard-list': Consultores,
+    'graduation-cap': Educacion
+  };
+
+  const handleCTAClick = (action) => {
+    switch (action) {
+      case 'scroll-projects':
+        scrollToSection('projects');
+        break;
+      case 'scroll-skills':
+        scrollToSection('skills');
+        break;
+      case 'open-projects-doc':
+        window.open('/Documents/Proyectos_HYG_Consultores_KevinMartinez.pdf', '_blank');
+        break;
+      case 'open-certificate':
+        window.open('/Documents/Certificado_tecnolgia_desarrollo_de_software.pdf', '_blank');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="section about-section">
@@ -17,29 +48,62 @@ const About = () => {
         <div className="top-row">
           <div className="about-img-section">
             <div className="image-wrapper">
-              <img src={AboutImg} className="about-img" alt="Kevin Martinez - Desarrollador Full Stack" />
+              <img 
+                src={AboutImg} 
+                className="about-img" 
+                alt="Kevin Martinez - Desarrollador Full Stack" 
+              />
             </div>
           </div>
-          <div className="about-text-section">
-            <div className="experience-elements">
-              {dataToFill.map((element, index) => (
-                <ExperienceElement
-                  key={`experience-${index}`}
-                  icon={element.icon}
-                  title={element.title}
-                  description={element.description}
-                  descriptionBold={element.descriptionBold}
-                  button={element.button}
-                  onclick={element.onclick}
-                />
+          
+          <div className="about-content-section">
+            {/* Headline + Value Proposition */}
+            <div className="about-headline">
+              <h3>{ABOUT_HEADLINE}</h3>
+            </div>
+
+            {/* Evidence-based Highlights */}
+            <div className="about-highlights">
+              {ABOUT_HIGHLIGHTS.map((highlight, index) => (
+                <div key={index} className="highlight-item">
+                  <CheckCircle2 className="highlight-icon" />
+                  <p>{highlight}</p>
+                </div>
               ))}
+            </div>
+
+            {/* Main Stack Line */}
+            <div className="about-stack">
+              <span className="stack-label">Stack principal:</span>
+              <span className="stack-text">{ABOUT_STACK}</span>
             </div>
           </div>
         </div>
-        <div className="bot-row">
-          <div className="experience-text">
-            <p className="text">{ABOUT_DESCRIPTION}</p>
-          </div>
+
+        {/* Stats Cards */}
+        <div className="stats-row">
+          {ABOUT_STATS.map((stat, index) => {
+            const IconComponent = iconMap[stat.icon];
+            return (
+              <div key={index} className="stat-card">
+                <div className="stat-icon-wrapper">
+                  <IconComponent className="stat-icon" />
+                </div>
+                <div className="stat-content">
+                  <div className="stat-number">{stat.number}</div>
+                  <div className="stat-label">{stat.label}</div>
+                  <div className="stat-subtitle">{stat.subtitle}</div>
+                  <button 
+                    className="stat-cta"
+                    onClick={() => handleCTAClick(stat.ctaAction)}
+                    aria-label={stat.ctaText}
+                  >
+                    {stat.ctaText} →
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

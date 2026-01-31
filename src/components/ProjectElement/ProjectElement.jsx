@@ -10,6 +10,7 @@ const ProjectElement = ({
   link,
   linkOnclick,
   isDark,
+  isInDevelopment = false,
 }) => {
 	const GithubIcon = isDark ? github.dark : github.light
 	const LinkIcon = isDark ? link.dark : link.light
@@ -18,11 +19,16 @@ const ProjectElement = ({
   return (
     <div className="project-element">
       <div className="project-img">
-        <img src={image} className="img" alt="project-image" />
+        <img src={image} className="img" alt={`${title} - proyecto`} />
+        {isInDevelopment && (
+          <div className="development-badge">
+            <span>🚧 En Desarrollo</span>
+          </div>
+        )}
       </div>
       <div className="project-info-cont">
         <div className="project-title-cont">
-          <p className="project-title">{title}</p>
+          <h3 className="project-title">{title}</h3>
         </div>
         <div className="project-text">
           <p className="project-description">{description}</p>
@@ -33,10 +39,18 @@ const ProjectElement = ({
             })}
           </div>
           <div className="project-btns">
-            <button aria-label='open website repository on github' className="btn" onClick={githubOnclick}>
+            <button 
+              aria-label={`Ver repositorio de ${title} en GitHub`}
+              className="btn" 
+              onClick={githubOnclick}
+            >
               <GithubIcon className="btn-text" />
             </button>
-            <button aria-label='open website project' className="btn" onClick={linkOnclick}>
+            <button 
+              aria-label={isInDevelopment ? `${title} - En desarrollo` : `Ver demo de ${title}`}
+              className="btn" 
+              onClick={linkOnclick}
+            >
               <LinkIcon className="btn-text" />
             </button>
           </div>
