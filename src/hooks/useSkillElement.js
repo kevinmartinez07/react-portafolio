@@ -14,11 +14,11 @@ export const useSkillElement = () => {
       tech: [
         'React',
         'Next.js',
+        'Angular',
         'JavaScript',
         'TypeScript',
         'HTML5',
         'CSS3',
-        'Material UI',
         'Bootstrap',
       ],
     },
@@ -27,12 +27,10 @@ export const useSkillElement = () => {
       title: 'Backend',
       tech: [
         'Node.js',
-        'C# .NET 8',
+        'C# .NET',
         'Java (Spring Boot)',
         'Flask (Python)',
         'REST APIs',
-        'Microservicios',
-        'Git & GitHub',
       ],
     },
     {
@@ -41,8 +39,7 @@ export const useSkillElement = () => {
       tech: [
         'PostgreSQL',
         'SQL Server',
-        'Oracle 19c',
-        'PostGIS',
+        'MongoDB',
       ],
     },
     {
@@ -61,9 +58,7 @@ export const useSkillElement = () => {
       title: 'Cloud',
       tech: [
         'Microsoft Azure',
-        'Azure App Services',
-        'Azure DataFactory',
-        'Azure Pipelines',
+        'AWS',
         'Docker',
         'Kubernetes',
       ],
@@ -76,7 +71,6 @@ export const useSkillElement = () => {
         'Pipelines en Azure DevOps',
         'Contenedores Docker',
         'Orquestación Kubernetes',
-        'Despliegue en Azure Cloud',
       ],
     },
     {

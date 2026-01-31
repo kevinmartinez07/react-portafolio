@@ -1,68 +1,50 @@
-import React from 'react'
 import '../../styles/Navbar.css'
 import { useHamburguer } from '../../hooks/useHamburguer.js'
 import { Sun, SunMoon, Menu, X } from 'lucide-react'
+import { NAV_ITEMS, PERSONAL_INFO } from '../../constants/data.js'
+import { scrollToSection } from '../../utils/scrollTo.js'
 
 const Navbar = ({ toggleTheme, isDark }) => {
   const { isMobile, isOpen, toggleMenu } = useHamburguer()
 
+  const handleNavClick = (id) => {
+    scrollToSection(id)
+    if (isOpen) toggleMenu()
+  }
+
   return (
-    <div className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main navigation">
       <button
         className="logo"
-        onClick={() => {
-          document
-            .getElementById('home')
-            .scrollIntoView({ behavior: 'smooth' })
-        }}
+        onClick={() => scrollToSection('home')}
+        aria-label="Go to home"
       >
-        Kevin Martinez
+        {PERSONAL_INFO.shortName}
       </button>
+      
       <div className="menu-cont">
-        <div className="menu">
-          <button
-            className="menu-btn"
-            onClick={() =>
-              document
-                .getElementById('about')
-                .scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Sobre mí
-          </button>
-          <button
-            className="menu-btn"
-            onClick={() =>
-              document
-                .getElementById('skills')
-                .scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Habilidades
-          </button>
-          <button
-            className="menu-btn"
-            onClick={() =>
-              document
-                .getElementById('projects')
-                .scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Proyectos
-          </button>
-          <button
-            className="menu-btn"
-            onClick={() =>
-              document
-                .getElementById('contact')
-                .scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Contacto
-          </button>
-        </div>
+        <ul className="menu" role="menubar">
+          {NAV_ITEMS.map(({ id, label }) => (
+            <li key={id} role="none">
+              <button
+                className="menu-btn"
+                onClick={() => handleNavClick(id)}
+                role="menuitem"
+                aria-label={`Navigate to ${label}`}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        </ul>
+
         {isMobile && (
-          <button className="hamburguer-toggle" onClick={toggleMenu}>
+          <button 
+            className="hamburguer-toggle" 
+            onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+          >
             {isOpen ? (
               <X size={20} strokeWidth={1.25} />
             ) : (
@@ -70,59 +52,29 @@ const Navbar = ({ toggleTheme, isDark }) => {
             )}
           </button>
         )}
+
         {isOpen && (
-          <div className={`hamburguer ${isOpen ? 'open' : 'close'}`}>
-            <button
-              className="menu-btn"
-              onClick={() => {
-                document
-                  .getElementById('about')
-                  .scrollIntoView({ behavior: 'smooth' })
-                toggleMenu()
-              }}
-            >
-              Sobre mí
-            </button>
-            <button
-              className="menu-btn"
-              onClick={() => {
-                document
-                  .getElementById('skills')
-                  .scrollIntoView({ behavior: 'smooth' })
-                toggleMenu()
-              }}
-            >
-              Habilidades
-            </button>
-            <button
-              className="menu-btn"
-              onClick={() => {
-                document
-                  .getElementById('projects')
-                  .scrollIntoView({ behavior: 'smooth' })
-                toggleMenu()
-              }}
-            >
-              Proyectos
-            </button>
-            <button
-              className="menu-btn"
-              onClick={() => {
-                document
-                  .getElementById('contact')
-                  .scrollIntoView({ behavior: 'smooth' })
-                toggleMenu()
-              }}
-            >
-              Contacto
-            </button>
-          </div>
+          <ul className={`hamburguer ${isOpen ? 'open' : 'close'}`} role="menu">
+            {NAV_ITEMS.map(({ id, label }) => (
+              <li key={id} role="none">
+                <button
+                  className="menu-btn"
+                  onClick={() => handleNavClick(id)}
+                  role="menuitem"
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
         )}
+
         <div className="theme">
           <button
             className="theme-btn"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={isDark ? 'Modo claro' : 'Modo oscuro'}
           >
             {isDark ? (
               <Sun size={20} strokeWidth={1.25} />
@@ -132,7 +84,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
           </button>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 
