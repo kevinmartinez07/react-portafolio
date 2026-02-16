@@ -208,7 +208,7 @@ openInNewTab('https://ejemplo.com')
 ## 🚀 Deploy
 
 Este proyecto puede ser desplegado en:
-- **Vercel** (recomendado)
+- **Vercel**
 - **Netlify**
 - **GitHub Pages**
 - Cualquier hosting estático
@@ -230,8 +230,4 @@ Este proyecto es personal y de código abierto. Siéntete libre de usarlo como p
 
 ## 🙏 Créditos
 
-Desarrollado con 💙 por Kevin Martinez para demostrar habilidades en desarrollo frontend moderno.
-
----
-
-**⭐ Si te gusta este proyecto, no olvides darle una estrella!**
+Desarrollado con 💙 por Kevin Martinez para demostrar habilidades en desarrollo frontend.
