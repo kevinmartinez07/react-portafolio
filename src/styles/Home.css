@@ -1,12 +1,15 @@
 #home {
   display: flex;
   align-items: center;
+  overflow-x: hidden;
+  width: 100%;
 
   .home-cont {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: var(--spacing-3xl);
     width: 100%;
+    max-width: 100%;
     align-items: center;
     animation: fadeIn 0.8s ease;
 
@@ -21,11 +24,12 @@
         &::before {
           content: '';
           position: absolute;
-          inset: -15px;
-          background: var(--gradient-primary);
+          inset: -20px;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
           border-radius: 40px;
-          opacity: 0.15;
+          opacity: 0.5;
           z-index: -1;
+          filter: blur(30px);
           animation: pulse 4s ease-in-out infinite;
         }
       }
@@ -68,11 +72,12 @@
 
         .iam {
           font-size: 1.125rem;
-          font-weight: 400;
-          color: var(--text-muted);
+          font-weight: 500;
+          color: var(--text-primary);
           margin-bottom: var(--spacing-xs);
           text-transform: uppercase;
           letter-spacing: 0.1em;
+          opacity: 0.8;
         }
 
         .name {
@@ -83,12 +88,15 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          text-shadow: none;
+          filter: brightness(1.1);
         }
 
         .developer {
           font-size: 1.75rem;
-          font-weight: 400;
-          color: var(--text-muted);
+          font-weight: 500;
+          color: var(--text-primary);
+          opacity: 0.85;
         }
       }
 
@@ -224,12 +232,12 @@
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 0.15;
+    opacity: 0.5;
     transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(1.05);
+    opacity: 0.7;
+    transform: scale(1.03);
   }
 }
 

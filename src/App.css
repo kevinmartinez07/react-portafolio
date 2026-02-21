@@ -91,12 +91,21 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 .app {
   position: relative;
   transition: background-color var(--transition-slow), color var(--transition-slow);
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 
   section {
     min-height: 100dvh;
@@ -147,7 +156,7 @@ html {
   --primary-text: #ffffff;
 
   color: var(--text-primary);
-  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.1) 0%, var(--bg-color) 50%);
+  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.08) 0%, var(--bg-color) 60%);
 
   button {
     color: var(--text-primary);
@@ -169,7 +178,7 @@ html {
   --primary-text: #ffffff;
 
   color: var(--text-primary);
-  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.05) 0%, var(--bg-color) 50%);
+  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.03) 0%, var(--bg-color) 60%);
 
   button {
     color: var(--text-primary);

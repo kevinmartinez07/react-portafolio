@@ -1,19 +1,18 @@
-import ClassifierImg from '../assets/Images/Projects/classifier-project.png'
-import ChatbotImg from '../assets/Images/Projects/chatbot-project.png'
-import SpaceShooterImg from '../assets/Images/Projects/project-1.webp'
 import Angular from '../assets/Icons/Logos/angular_gradient.svg?react'
-import Csharp from '../assets/Icons/Logos/csharp.svg?react'
 import Css from '../assets/Icons/Logos/css.svg?react'
 import Html from '../assets/Icons/Logos/html5.svg?react'
 import JavaScript from '../assets/Icons/Logos/javascript.svg?react'
-import NodeJs from '../assets/Icons/Logos/nodejs.svg?react'
 import Postgresql from '../assets/Icons/Logos/postgresql.svg?react'
 import Python from '../assets/Icons/Logos/python.svg?react'
 import TypeScript from '../assets/Icons/Logos/typescript.svg?react'
-import GithubIcon from '../assets/Icons/Other/github.svg?react'
 import GithubIconLight from '../assets/Icons/Other/github-white.svg?react'
-import LinkIcon from '../assets/Icons/Other/link.svg?react'
+import GithubIcon from '../assets/Icons/Other/github.svg?react'
 import LinkIconWhite from '../assets/Icons/Other/link-white.svg?react'
+import LinkIcon from '../assets/Icons/Other/link.svg?react'
+import ChatbotImg from '../assets/Images/Projects/chatbot-project.png'
+import ClassifierImg from '../assets/Images/Projects/classifier-project.png'
+import FinanzAppImg from '../assets/Images/Projects/finanz-app-img.png'
+import SpaceShooterImg from '../assets/Images/Projects/space-shooter-img.png'
 
 export const useProjectElement = () => {
   const techIcon = (icon) => ({ light: icon, dark: icon })
@@ -61,14 +60,35 @@ export const useProjectElement = () => {
       technologies: [
         techIcon(Angular),
         techIcon(TypeScript),
-        techIcon(Csharp),
-        techIcon(Postgresql),
+        // techIcon(Csharp),
+        // techIcon(Postgresql),
       ],
       github: { light: GithubIcon, dark: GithubIconLight },
       githubOnclik: () =>
         window.open('https://github.com/kevinmartinez07/space-shooter'),
       link: { light: LinkIcon, dark: LinkIconWhite },
-      linkOnclick: () => alert('Proyecto en reorganización - Deploy próximamente'),
+      linkOnclick: () => window.open('https://space-shooter-web-seven.vercel.app/'),
+      isInDevelopment: true,
+    },
+    {
+      image: FinanzAppImg,
+      title: 'Finanz App - Sistema de ingresos y egresos',
+      description:
+        'Sistema fullstack empresarial para la gestión de movimientos financieros con arquitectura escalable y mantenible. Construido con Next.js 15, TypeScript, Prisma ORM, Better Auth siguiendo principios de Clean Architecture y Domain-Driven Design (DDD).',
+      technologies: [
+        // techIcon(Nextjs),
+        techIcon(TypeScript),
+        // techIcon(Prisma),
+        // techIcon(BetterAuth),
+        // techIcon(CleanArchitecture),
+        // techIcon(DDD),
+        techIcon(Postgresql),
+      ],
+      github: { light: GithubIcon, dark: GithubIconLight },
+      githubOnclik: () =>
+        window.open('https://github.com/kevinmartinez07/sistema-gestion-ingresos'),
+      link: { light: LinkIcon, dark: LinkIconWhite },
+      linkOnclick: () => window.open('https://sistema-gestion-ingresos.vercel.app/'),
       isInDevelopment: true,
     },
   ]
