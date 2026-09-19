@@ -1,90 +1,69 @@
-import '../../styles/Navbar.css'
-import { useHamburguer } from '../../hooks/useHamburguer.js'
-import { Sun, SunMoon, Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import { NAV_ITEMS, PERSONAL_INFO } from '../../constants/data.js'
-import { scrollToSection } from '../../utils/scrollTo.js'
+import { useTheme } from '../../hooks/useThemeContext.js'
 
-const Navbar = ({ toggleTheme, isDark }) => {
-  const { isMobile, isOpen, toggleMenu } = useHamburguer()
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const { isDark, toggleTheme } = useTheme()
 
-  const handleNavClick = (id) => {
-    scrollToSection(id)
-    if (isOpen) toggleMenu()
-  }
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  const closeMenu = () => setIsOpen(false)
 
   return (
-    <nav className="navbar" role="navigation" aria-label="Main navigation">
-      <button
-        className="logo"
-        onClick={() => scrollToSection('home')}
-        aria-label="Go to home"
-      >
-        {PERSONAL_INFO.shortName}
-      </button>
-      
-      <div className="menu-cont">
-        <ul className="menu" role="menubar">
-          {NAV_ITEMS.map(({ id, label }) => (
-            <li key={id} role="none">
-              <button
-                className="menu-btn"
-                onClick={() => handleNavClick(id)}
-                role="menuitem"
-                aria-label={`Navigate to ${label}`}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <header className="site-header">
+      <nav className="navbar" aria-label="Navegación principal">
+        <a className="brand" href="#home" onClick={closeMenu}>
+          <span className="brand-mark" aria-hidden="true">KM/</span>
+          <span className="brand-name">{PERSONAL_INFO.shortName}</span>
+        </a>
 
-        {isMobile && (
-          <button 
-            className="hamburguer-toggle" 
-            onClick={toggleMenu}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? (
-              <X size={20} strokeWidth={1.25} />
-            ) : (
-              <Menu size={20} strokeWidth={1.25} />
-            )}
-          </button>
-        )}
+        <button
+          className="icon-button menu-toggle"
+          type="button"
+          aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-controls="primary-navigation"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((current) => !current)}
+        >
+          {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
 
-        {isOpen && (
-          <ul className={`hamburguer ${isOpen ? 'open' : 'close'}`} role="menu">
-            {NAV_ITEMS.map(({ id, label }) => (
-              <li key={id} role="none">
-                <button
-                  className="menu-btn"
-                  onClick={() => handleNavClick(id)}
-                  role="menuitem"
-                >
+        <div
+          className={`navigation-panel ${isOpen ? 'is-open' : ''}`}
+          id="primary-navigation"
+        >
+          <ul className="navigation-list">
+            {NAV_ITEMS.map(({ id, label }, index) => (
+              <li key={id}>
+                <a href={`#${id}`} onClick={closeMenu}>
+                  <span aria-hidden="true">0{index + 1}</span>
                   {label}
-                </button>
+                </a>
               </li>
             ))}
           </ul>
-        )}
 
-        <div className="theme">
           <button
-            className="theme-btn"
+            className="icon-button theme-toggle"
+            type="button"
             onClick={toggleTheme}
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={isDark ? 'Modo claro' : 'Modo oscuro'}
+            aria-label={isDark ? 'Activar tema claro' : 'Activar tema oscuro'}
+            title={isDark ? 'Tema claro' : 'Tema oscuro'}
           >
-            {isDark ? (
-              <Sun size={20} strokeWidth={1.25} />
-            ) : (
-              <SunMoon size={20} strokeWidth={1.25} />
-            )}
+            {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
           </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
 

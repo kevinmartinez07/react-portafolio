@@ -1,233 +1,121 @@
-# 💼 Portfolio - Kevin Martinez
+# Portafolio profesional - Kevin Martinez
 
-Portafolio profesional de **Kevin Santiago Martinez Molina**, Desarrollador Full Stack especializado en React, Next.js, .NET, Spring Boot y soluciones geográficas corporativas.
+Portafolio de **Kevin Santiago Martinez Molina**, Full-Stack Engineer con experiencia en React, Angular, Next.js, .NET, Java, Node.js, PostgreSQL, AWS y Azure.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](http://localhost:5174/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6.3-646CFF?logo=vite)](https://vitejs.dev/)
+[Ver portafolio](https://react-portafolio-beige.vercel.app/) · [LinkedIn](https://linkedin.com/in/kevin-santiago-martinez-molina-b21a0b166) · [GitHub](https://github.com/kevinmartinez07)
 
-## 🚀 Características
+## Objetivo
 
-- ⚡ **React 19** con Vite para desarrollo ultrarrápido
-- 🎨 **Sistema de diseño** con componentes reutilizables
-- 🌓 **Tema claro/oscuro** con persistencia en localStorage
-- 📱 **100% Responsive** - Mobile-first approach
-- ♿ **Accesible** - ARIA labels y navegación por teclado
-- 🎭 **Animaciones fluidas** con CSS moderno
-- 🚀 **Lazy Loading** para optimización de performance
-- 📦 **Context API** para gestión de estado global
-- 🎯 **SEO Optimizado** con semántica HTML5
+Presentar experiencia profesional y proyectos mediante casos breves que expliquen contexto, contribuciones y decisiones técnicas. El sitio prioriza legibilidad, navegación accesible, rendimiento y mantenimiento sencillo.
 
-## 🛠️ Tecnologías
+## Características
 
-- **React 19** - Framework principal
-- **Vite 6.3** - Build tool y dev server
-- **Lucide React** - Iconografía moderna
-- **CSS Modules** - Estilos con scope local
-- **Context API** - Gestión de estado
-- **Custom Hooks** - Lógica reutilizable
+- Diseño responsive con temas claro y oscuro.
+- Experiencia profesional organizada cronológicamente.
+- Proyectos con contexto, evidencias, tecnologías y enlaces verificados.
+- Datos profesionales centralizados en `src/constants/data.js`.
+- HTML semántico, navegación por teclado y soporte para movimiento reducido.
+- Metadatos SEO, Open Graph, Twitter Cards y JSON-LD.
+- `robots.txt`, sitemap y headers de seguridad para Vercel.
+- Pruebas automáticas de contenido y SEO con `node:test`.
+- Pipeline de calidad con GitHub Actions.
 
-## 📦 Instalación
+## Tecnologías
+
+- React 19
+- Vite
+- Lucide React
+- CSS moderno sin framework de estilos
+- ESLint
+- Node Test Runner
+
+## Desarrollo local
+
+Requisitos: Node.js 22 y npm.
 
 ```bash
-# Clonar repositorio
-git clone https://github.com/kevinmartinez07/portfolio.git
-cd portfolio
-
-# Instalar dependencias
-npm install
-
-# Iniciar servidor de desarrollo
+git clone https://github.com/kevinmartinez07/react-portafolio.git
+cd react-portafolio
+npm ci
 npm run dev
+```
 
-# Build para producción
+## Validación
+
+```bash
+npm run check
+```
+
+El comando ejecuta, en orden:
+
+1. ESLint.
+2. Pruebas automatizadas.
+3. Build de producción.
+
+Comandos individuales:
+
+```bash
+npm run lint
+npm run test
 npm run build
-
-# Preview del build
 npm run preview
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura principal
 
-```
+```text
 src/
-├── assets/              # Imágenes e iconos
 ├── components/
-│   ├── common/          # Componentes reutilizables (Button, Card, Section)
-│   ├── Navbar/
 │   ├── ContactForm/
-│   ├── ProjectElement/
-│   ├── SkillsElement/
-│   └── ExperienceElement/
-├── pages/               # Páginas principales
-│   ├── Home/
+│   └── Navbar/
+├── constants/
+│   └── data.js
+├── context/
+├── hooks/
+├── pages/
 │   ├── About/
-│   ├── Skills/
+│   ├── Contact/
+│   ├── Experience/
+│   ├── Home/
 │   ├── Projects/
-│   └── Contact/
-├── context/             # Context providers (Theme)
-├── hooks/               # Custom hooks
-├── constants/           # Datos centralizados
-├── utils/               # Funciones auxiliares
-└── styles/              # Estilos globales
+│   └── Skills/
+├── App.css
+├── App.jsx
+└── main.jsx
 ```
 
-## 🎨 Sistema de Diseño
+## Actualizar el contenido
 
-### Componentes Reutilizables
+La experiencia, proyectos, enlaces y habilidades se mantienen en:
 
-#### Button
-```jsx
-<Button variant="primary" size="medium" onClick={handleClick}>
-  Texto
-</Button>
-```
-**Variantes:** `primary`, `outline`, `ghost`  
-**Tamaños:** `small`, `medium`, `large`
-
-#### Card
-```jsx
-<Card hover={true} padding="medium">
-  Contenido
-</Card>
+```text
+src/constants/data.js
 ```
 
-#### Section
-```jsx
-<Section id="about" title="Sobre Mí" subtitle="Conoce más">
-  Contenido
-</Section>
-```
+Antes de publicar cambios se recomienda ejecutar `npm run check` y comprobar que los enlaces externos continúen disponibles.
 
-### Variables CSS
+## Despliegue
 
-Sistema completo de tokens de diseño:
-- **Colores:** Paletas para tema claro/oscuro
-- **Espaciado:** Sistema de 8px (xs, sm, md, lg, xl, 2xl, 3xl)
-- **Border Radius:** 4 niveles de redondeo
-- **Transiciones:** 3 velocidades (fast, base, slow)
-- **Sombras:** 4 niveles de elevación
-
-## 🎯 Personalización Rápida
-
-### 1. Actualizar Información Personal
-Edita `src/constants/data.js`:
-```javascript
-export const PERSONAL_INFO = {
-  name: 'Tu Nombre Completo',
-  shortName: 'Tu Nombre',
-  title: 'Tu Título Profesional',
-  linkedin: 'tu-linkedin-url',
-  github: 'tu-github-url',
-  cvPath: '/Documents/tu-cv.pdf'
-}
-```
-
-### 2. Cambiar Colores de Marca
-Edita `src/App.css` (líneas 17-22):
-```css
---primary-color: #3b82f6;     /* Tu color principal */
---primary-hover: #2563eb;     /* Versión hover */
---accent-color: #8b5cf6;      /* Color de acento */
-```
-
-### 3. Agregar Nueva Sección
-1. Crea componente en `src/pages/TuSeccion/`
-2. Importa en `App.jsx` con lazy loading
-3. Agrega entrada en `NAV_ITEMS` en `constants/data.js`
-
-## 📱 Responsive Breakpoints
-
-- **Mobile:** < 500px
-- **Tablet:** 501px - 900px
-- **Desktop:** 901px - 1919px
-- **Large Desktop:** 1920px - 2249px
-- **Extra Large:** ≥ 2250px
-
-## ♿ Accesibilidad
-
-- ✅ ARIA labels en todos los elementos interactivos
-- ✅ Navegación por teclado completa
-- ✅ Estados de focus visibles
-- ✅ Contraste WCAG AA
-- ✅ Semántica HTML5
-
-## 🚀 Scripts Disponibles
+El proyecto está configurado para Vercel mediante `vercel.json` y utiliza npm como único gestor de dependencias.
 
 ```bash
-npm run dev      # Servidor de desarrollo
-npm run build    # Build de producción
-npm run preview  # Preview del build
-npm run lint     # Linter ESLint
-```
-
-## 🔧 Arquitectura
-
-### Context API
-```jsx
-// Uso del tema
-import { useTheme } from './hooks/useThemeContext'
-
-const { theme, isDark, toggleTheme } = useTheme()
-```
-
-### Custom Hooks
-- `useTheme` - Gestión de tema
-- `useHamburguer` - Menú responsive
-- `useProjectElement` - Gestión de proyectos
-- `useSkillElement` - Gestión de habilidades
-
-### Utilidades
-```javascript
-import { scrollToSection, openInNewTab } from './utils/scrollTo'
-
-scrollToSection('about')
-openInNewTab('https://ejemplo.com')
-```
-
-## 📊 Performance
-
-- ⚡ Lazy loading de páginas
-- 🎯 Code splitting automático
-- 📦 Build optimizado con Vite
-- 🖼️ Imágenes en formato WebP
-
-## 🎓 Buenas Prácticas Implementadas
-
-1. ✅ **Context API** para estado global
-2. ✅ **Lazy Loading** de componentes
-3. ✅ **Custom Hooks** para lógica reutilizable
-4. ✅ **Constantes centralizadas** en lugar de hardcoded
-5. ✅ **CSS Variables** para theming consistente
-6. ✅ **Componentes pequeños y enfocados** (SRP)
-7. ✅ **Naming conventions** claras
-8. ✅ **Animaciones CSS** para performance
-9. ✅ **Mobile-first** approach
-10. ✅ **Accesibilidad** como prioridad
-
-## 🚀 Deploy
-
-Este proyecto puede ser desplegado en:
-- **Vercel**
-- **Netlify**
-- **GitHub Pages**
-- Cualquier hosting estático
-
-```bash
+npm ci
 npm run build
-# La carpeta dist/ contiene el sitio listo
 ```
 
-## 📧 Contacto
+La salida de producción se genera en `dist/`.
 
-- **LinkedIn:** [Kevin Santiago Martinez Molina](http://linkedin.com/in/kevin-santiago-martinez-molina-b21a0b166)
-- **GitHub:** [kevinmartinez07](https://github.com/kevinmartinez07)
-- **Email:** Disponible en el portafolio
+## Regenerar el CV
 
-## 📄 Licencia
+El PDF publicado se puede reconstruir de forma reproducible:
 
-Este proyecto es personal y de código abierto. Siéntete libre de usarlo como plantilla, pero recuerda personalizar la información con tus propios datos, proyectos y redes sociales.
+```bash
+python3 -m pip install -r scripts/requirements-cv.txt
+python3 scripts/generate_cv.py
+```
 
-## 🙏 Créditos
+El archivo resultante reemplaza `public/Documents/CV_Kevin_Martinez.pdf`.
 
-Desarrollado con 💙 por Kevin Martinez para demostrar habilidades en desarrollo frontend.
+## Licencia
+
+Distribuido bajo la licencia MIT. Consulta [LICENSE](LICENSE).

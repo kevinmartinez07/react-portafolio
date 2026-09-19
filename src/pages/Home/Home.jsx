@@ -1,139 +1,66 @@
-import '../../styles/Home.css'
-import { useHamburguer } from '../../hooks/useHamburguer'
-import ProfileImg from '../../assets/Images/Kevin/profile-img.webp'
-import GithubIconDark from '../../assets/Icons/Logos/GitHub_dark.svg?react'
-import GithubIconLight from '../../assets/Icons/Logos/GitHub_light.svg?react'
-import LinkedinIcon from '../../assets/Icons/Logos/linkedin.svg?react'
-import DownloadCV from '../../assets/Icons/Other/CV.svg?react'
-import DownloadCvWhite from '../../assets/Icons/Other/CV-white.svg?react'
-import MailWhite from '../../assets/Icons/Other/mail-white.svg?react'
-import Mail from '../../assets/Icons/Other/mail.svg?react'
-import LinkedinSmallWhite from '../../assets/Icons/Other/linkedin-white.svg?react'
-import LinkedinSmall from '../../assets/Icons/Other/linkedin.svg?react'
-import GithubSmallWhite from '../../assets/Icons/Other/github-white.svg?react'
-import GithubSmall from '../../assets/Icons/Other/github.svg?react'
-import { PERSONAL_INFO } from '../../constants/data'
-import { scrollToSection, openInNewTab } from '../../utils/scrollTo'
+import { ArrowDownRight, Download, Github, Linkedin } from 'lucide-react'
+import ProfileImage from '../../assets/Images/Kevin/profile-img.webp'
+import { PERSONAL_INFO } from '../../constants/data.js'
 
-const Home = ({ isDark }) => {
-  const { isSmallMobile } = useHamburguer()
+const Home = () => (
+  <section className="hero section-shell" id="home" aria-labelledby="hero-title">
+    <div className="hero-copy">
+      <p className="eyebrow">Kevin Martinez — Medellín, CO</p>
+      <h1 id="hero-title">
+        Construyo software
+        <span>que conecta producto y sistemas.</span>
+      </h1>
+      <p className="hero-stack">{PERSONAL_INFO.role} · {PERSONAL_INFO.headline}</p>
+      <p className="hero-summary">
+        He trabajado en producto, soluciones empresariales y sistemas geográficos.
+        Me muevo con naturalidad entre la interfaz, el backend, los datos y la nube.
+      </p>
 
-  const handleCVClick = () => openInNewTab(PERSONAL_INFO.cvPath)
-  const handleContactClick = () => scrollToSection('contact')
-  const handleLinkedinClick = () => openInNewTab(PERSONAL_INFO.linkedin)
-  const handleGithubClick = () => openInNewTab(PERSONAL_INFO.github)
-
-  return (
-    <div className="home-cont">
-      <div className="profile">
-        <div className="profile-image-wrapper">
-          <img 
-            src={ProfileImg} 
-            className={`profile-img ${isDark ? 'dark-shadow' : 'light-shadow'}`} 
-            alt={`${PERSONAL_INFO.name} - Desarrollador Full Stack`}
-            loading="eager"
-          />
-        </div>
+      <div className="availability-row">
+        <span className="availability-dot" aria-hidden="true" />
+        <span>{PERSONAL_INFO.availability}</span>
       </div>
-      
-      <div className="sumary">
-        <div className="text">
-          <h3 className="iam">{PERSONAL_INFO.greeting}</h3>
-          <h1 className="name">{PERSONAL_INFO.shortName}</h1>
-          <h2 className="developer">{PERSONAL_INFO.title}</h2>
-        </div>
-        
-        {!isSmallMobile ? (
-          <>
-            <div className="btns">
-              <button
-                className="cv"
-                onClick={handleCVClick}
-                aria-label="Visualizar CV"
-              >
-                Visualizar CV
-              </button>
-              <button
-                className={`contact ${isDark ? 'dark-btn' : 'light-btn'}`}
-                onClick={handleContactClick}
-                aria-label="Ir a contacto"
-              >
-                Contáctame
-              </button>
-            </div>
-            
-            <div className="rrss" role="list" aria-label="Redes sociales">
-              <button
-                aria-label='Abrir perfil de LinkedIn'
-                className="rrss-btn"
-                onClick={handleLinkedinClick}
-              >
-                <LinkedinIcon className="rrss-icon" />
-              </button>
-              <button
-                aria-label='Abrir perfil de GitHub'
-                className="rrss-btn"
-                onClick={handleGithubClick}
-              >
-                {isDark ? (
-                  <GithubIconDark className="rrss-icon" />
-                ) : (
-                  <GithubIconLight className="rrss-icon" />
-                )}
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="small-btns" role="list" aria-label="Acciones rápidas">
-            <button
-              className="rrss-small-btn"
-              onClick={handleCVClick}
-              aria-label="Visualizar CV"
-            >
-              {isDark ? (
-                <DownloadCvWhite className="rrss-icon" />
-              ) : (
-                <DownloadCV className="rrss-icon" />
-              )}
-            </button>
-            <button
-              className="rrss-small-btn"
-              onClick={handleContactClick}
-              aria-label="Ir a contacto"
-            >
-              {isDark ? (
-                <MailWhite className="rrss-icon" />
-              ) : (
-                <Mail className="rrss-icon" />
-              )}
-            </button>
-            <button
-              className="rrss-small-btn"
-              onClick={handleLinkedinClick}
-              aria-label="Abrir perfil de LinkedIn"
-            >
-              {isDark ? (
-                <LinkedinSmallWhite className="rrss-icon" />
-              ) : (
-                <LinkedinSmall className="rrss-icon" />
-              )}
-            </button>
-            <button
-              className="rrss-small-btn"
-              onClick={handleGithubClick}
-              aria-label="Abrir perfil de GitHub"
-            >
-              {isDark ? (
-                <GithubSmallWhite className="rrss-icon" />
-              ) : (
-                <GithubSmall className="rrss-icon" />
-              )}
-            </button>
-          </div>
-        )}
+
+      <div className="hero-actions">
+        <a className="button button-primary" href="#experience">
+          Recorrer mi trabajo <ArrowDownRight aria-hidden="true" />
+        </a>
+        <a
+          className="button button-secondary"
+          href={PERSONAL_INFO.cvPath}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Descargar CV <Download aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="social-links" aria-label="Perfiles profesionales">
+        <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer">
+          <Github aria-hidden="true" /> GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer">
+          <Linkedin aria-hidden="true" /> LinkedIn <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
-  )
-}
+
+    <figure className="hero-visual">
+      <div className="portrait-frame" aria-label="Fotografía profesional de Kevin Martinez">
+        <img
+          src={ProfileImage}
+          alt="Kevin Santiago Martinez Molina, desarrollador full stack"
+          width="452"
+          height="596"
+          fetchPriority="high"
+        />
+      </div>
+      <figcaption>
+        <span>01 — PERFIL</span>
+        <span>Full stack / 2026</span>
+      </figcaption>
+    </figure>
+  </section>
+)
 
 export default Home
