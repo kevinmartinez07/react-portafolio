@@ -22,10 +22,8 @@ const Navbar = () => {
     <header className="site-header">
       <nav className="navbar" aria-label="Navegación principal">
         <a className="brand" href="#home" onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true">
-            KM
-          </span>
-          <span>{PERSONAL_INFO.shortName}</span>
+          <span className="brand-mark" aria-hidden="true">KM/</span>
+          <span className="brand-name">{PERSONAL_INFO.shortName}</span>
         </a>
 
         <button
@@ -44,9 +42,10 @@ const Navbar = () => {
           id="primary-navigation"
         >
           <ul className="navigation-list">
-            {NAV_ITEMS.map(({ id, label }) => (
+            {NAV_ITEMS.map(({ id, label }, index) => (
               <li key={id}>
                 <a href={`#${id}`} onClick={closeMenu}>
+                  <span aria-hidden="true">0{index + 1}</span>
                   {label}
                 </a>
               </li>

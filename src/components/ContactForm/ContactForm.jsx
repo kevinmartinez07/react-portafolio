@@ -30,7 +30,7 @@ const ContactForm = () => (
       La información se utilizará únicamente para responder este mensaje.
     </p>
     <button className="button button-primary" type="submit">
-      Enviar mensaje
+      Enviar mensaje <span aria-hidden="true">↗</span>
     </button>
   </form>
 )

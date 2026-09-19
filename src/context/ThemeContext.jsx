@@ -22,7 +22,7 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('theme', theme);
 
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    themeColor?.setAttribute('content', theme === 'dark' ? '#090d14' : '#f6f8fc');
+    themeColor?.setAttribute('content', theme === 'dark' ? '#151814' : '#f3f0e8');
   }, [theme]);
 
   const value = {
@@ -37,4 +37,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-

@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   name: 'Kevin Santiago Martinez Molina',
   shortName: 'Kevin Martinez',
   role: 'Full-Stack Engineer',
-  headline: 'React, Angular, .NET, Java, Node.js y Cloud',
+  headline: 'Producto digital, APIs y plataformas cloud',
   location: 'Medellín, Colombia',
   email: 'kevinmartinez0114@gmail.com',
   availability: 'Disponible para oportunidades remotas e híbridas',
@@ -23,26 +23,26 @@ export const NAV_ITEMS = [
 ]
 
 export const IMPACT_METRICS = [
-  { value: '3+', label: 'años de experiencia profesional' },
-  { value: '3', label: 'sectores: cloud, producto y GIS' },
+  { value: '2023→', label: 'construyendo software profesional' },
+  { value: '3', label: 'equipos y contextos empresariales' },
   { value: '9.º', label: 'semestre de Ingeniería de Sistemas' },
 ]
 
 export const ABOUT_POINTS = [
   {
-    title: 'Producto y negocio',
+    title: 'Primero entiendo la operación',
     description:
-      'Convierto necesidades operativas en funcionalidades mantenibles, colaborando con producto, clientes y equipos multidisciplinarios.',
+      'Antes de proponer código pregunto cómo funciona el proceso, quién lo usa y qué problema debe dejar de existir. Esa conversación evita construir funcionalidades correctas para el problema equivocado.',
   },
   {
-    title: 'Arquitectura pragmática',
+    title: 'Diseño para que otro continúe',
     description:
-      'Aplico arquitectura limpia y hexagonal, DDD, SOLID y patrones cuando aportan claridad, pruebas y evolución sostenible.',
+      'Me importan los límites claros, los nombres útiles y las decisiones documentadas. Uso arquitectura limpia, hexagonal o DDD cuando simplifican el mantenimiento, no para llenar diagramas.',
   },
   {
-    title: 'Entrega de extremo a extremo',
+    title: 'Entrego y vuelvo a observar',
     description:
-      'Trabajo desde la interfaz y los contratos API hasta datos, seguridad, integraciones, CI/CD y despliegues en AWS o Azure.',
+      'Puedo seguir una funcionalidad desde la interfaz hasta el dato y el despliegue. Después de publicar reviso el comportamiento real y ajusto lo que la implementación no permitió anticipar.',
   },
 ]
 

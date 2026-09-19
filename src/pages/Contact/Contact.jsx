@@ -6,11 +6,11 @@ const Contact = () => (
   <section className="content-section" id="contact" aria-labelledby="contact-title">
     <div className="section-shell contact-layout">
       <div className="contact-copy">
-        <p className="eyebrow">Conversemos</p>
-        <h2 id="contact-title">¿Tienes una oportunidad o un proyecto?</h2>
+        <p className="section-index">05 / Contacto</p>
+        <h2 id="contact-title">Hablemos con contexto.</h2>
         <p>
-          Estoy disponible para conversar sobre desarrollo full stack, modernización de
-          aplicaciones, integraciones y soluciones cloud.
+          Si estás construyendo un producto, modernizando una aplicación o buscando a
+          alguien que pueda moverse entre frontend, backend y cloud, escríbeme.
         </p>
 
         <div className="contact-links">

@@ -6,8 +6,8 @@ const Projects = () => (
     <div className="section-shell">
       <div className="section-heading split-heading">
         <div>
-          <p className="eyebrow">Trabajo seleccionado</p>
-          <h2 id="projects-title">Proyectos con contexto técnico</h2>
+          <p className="section-index">03 / Trabajo seleccionado</p>
+          <h2 id="projects-title">Casos donde las decisiones importan.</h2>
         </div>
         <p>
           Una selección que evidencia desarrollo de producto, arquitectura, experiencia
@@ -16,34 +16,38 @@ const Projects = () => (
       </div>
 
       <div className="projects-grid">
-        {PROJECTS.map((project) => (
-          <article
-            className="project-card"
-            key={project.id}
-            style={{ '--project-accent': project.accent }}
-          >
-            <div className="project-cover">
-              <span>{project.category}</span>
-              <strong>{project.title}</strong>
+        {PROJECTS.map((project, index) => (
+          <article className="project-card" key={project.id}>
+            <div className="project-aside">
+              <span className="project-number" aria-hidden="true">0{index + 1}</span>
+              <p>{project.category}</p>
               <small>{project.status}</small>
             </div>
             <div className="project-content">
-              <p>{project.description}</p>
+              <div className="project-title-row">
+                <h3>{project.title}</h3>
+                <div className="project-links">
+                  <a href={project.repository} target="_blank" rel="noreferrer">
+                    <Github aria-hidden="true" /> Código
+                  </a>
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noreferrer">
+                      <ExternalLink aria-hidden="true" /> Ver sitio
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p className="project-description">{project.description}</p>
               <ul>
                 {project.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
               <div className="tag-list">
-                {project.stack.map((technology) => (
-                  <span key={technology}>{technology}</span>
-                ))}
+                {project.stack.join(' / ')}
               </div>
-              <div className="project-links">
-                <a href={project.repository} target="_blank" rel="noreferrer">
-                  <Github aria-hidden="true" /> Código
-                </a>
-                {project.secondaryRepository && (
+              {project.secondaryRepository && (
+                <div className="secondary-link">
                   <a
                     href={project.secondaryRepository}
                     target="_blank"
@@ -51,13 +55,8 @@ const Projects = () => (
                   >
                     <Github aria-hidden="true" /> API
                   </a>
-                )}
-                {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noreferrer">
-                    <ExternalLink aria-hidden="true" /> Demo
-                  </a>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </article>
         ))}
