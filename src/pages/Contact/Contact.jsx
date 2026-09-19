@@ -1,38 +1,33 @@
-import React from 'react'
-import '../../styles/Contact.css'
-import ContactForm from '../../components/ContactForm/ContactForm'
-import GmailIcon from '../../assets/Icons/Logos/gmail.svg?react'
-import LinkedinIcon from '../../assets/Icons/Logos/linkedin.svg?react'
+import { Github, Linkedin, Mail } from 'lucide-react'
+import ContactForm from '../../components/ContactForm/ContactForm.jsx'
+import { PERSONAL_INFO } from '../../constants/data.js'
 
-const Contact = () => {
-  return (
-    <div className="section">
-      <div className="name-section">
-        <p className="section-subtitle">Quedo a su disposición</p>
-        <p className="section-title">Contáctame</p>
-      </div>
-      <div className="contact-cont">
-        <ContactForm />
-      </div>
-      <div className="contact-info">
-        <div className="contact-section">
-          <GmailIcon className="contact-icon" />
-          <a className="contact-text" href="mailto:kevinmartinez0114@gmail.com">
-            kevinmartinez0114@gmail.com
+const Contact = () => (
+  <section className="content-section" id="contact" aria-labelledby="contact-title">
+    <div className="section-shell contact-layout">
+      <div className="contact-copy">
+        <p className="eyebrow">Conversemos</p>
+        <h2 id="contact-title">¿Tienes una oportunidad o un proyecto?</h2>
+        <p>
+          Estoy disponible para conversar sobre desarrollo full stack, modernización de
+          aplicaciones, integraciones y soluciones cloud.
+        </p>
+
+        <div className="contact-links">
+          <a href={`mailto:${PERSONAL_INFO.email}`}>
+            <Mail aria-hidden="true" /> {PERSONAL_INFO.email}
           </a>
-        </div>
-        <div className="contact-section">
-          <LinkedinIcon className="contact-icon" />
-          <a
-            className="contact-text"
-            href="http://linkedin.com/in/kevin-santiago-martinez-molina-b21a0b166"
-          >
-            Linkedin
+          <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer">
+            <Linkedin aria-hidden="true" /> LinkedIn
+          </a>
+          <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer">
+            <Github aria-hidden="true" /> GitHub
           </a>
         </div>
       </div>
+      <ContactForm />
     </div>
-  )
-}
+  </section>
+)
 
 export default Contact

@@ -1,45 +1,38 @@
-import React from "react";
+const ContactForm = () => (
+  <form
+    className="contact-form"
+    action="https://formspree.io/f/xwpolepz"
+    method="POST"
+  >
+    <input type="hidden" name="_subject" value="Contacto desde el portafolio" />
+    <div className="honeypot" aria-hidden="true">
+      <label htmlFor="company-site">No completar este campo</label>
+      <input id="company-site" name="_gotcha" tabIndex="-1" autoComplete="off" />
+    </div>
 
-const ContactForm = () => {
-  return (
-    <form
-      className="contact-form"
-      action={"https://formspree.io/f/xwpolepz"}
-      method="POST"
-    >
-      <input
-        required
-        name="nombre"
-        type="text"
-        className="input top"
-        placeholder="Nombre"
-      />
-      <input
-        required
-        name="email"
-        type="email"
-        className="input"
-        placeholder="Email"
-      />
-      <input
-        required
-        name="empresa"
-        type="text"
-        className="input"
-        placeholder="Empesa"
-      />
-      <textarea
-        required
-        name="message"
-        id="message"
-        placeholder="Escribeme y te respondere lo antes posible!"
-      ></textarea>
+    <div className="form-field">
+      <label htmlFor="name">Nombre</label>
+      <input id="name" name="nombre" type="text" autoComplete="name" required />
+    </div>
+    <div className="form-field">
+      <label htmlFor="email">Correo electrónico</label>
+      <input id="email" name="email" type="email" autoComplete="email" required />
+    </div>
+    <div className="form-field">
+      <label htmlFor="company">Empresa <span>(opcional)</span></label>
+      <input id="company" name="empresa" type="text" autoComplete="organization" />
+    </div>
+    <div className="form-field">
+      <label htmlFor="message">Mensaje</label>
+      <textarea id="message" name="message" rows="6" required />
+    </div>
+    <p className="form-note">
+      La información se utilizará únicamente para responder este mensaje.
+    </p>
+    <button className="button button-primary" type="submit">
+      Enviar mensaje
+    </button>
+  </form>
+)
 
-      <button type="submit" className="submit">
-        Enviar
-      </button>
-    </form>
-  );
-};
-
-export default ContactForm;
+export default ContactForm
